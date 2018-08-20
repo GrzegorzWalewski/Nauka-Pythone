@@ -1,0 +1,5 @@
+stanPoczatkowy=float(input("Podaj stan poczatkowy konta\n"))
+stopaProcentowa=float(input("Podaj stope procentowa\n"))
+liczbaLat=float(input("Podaj ilosc lat na lokacie\n"))
+wynik=0.81*(stanPoczatkowy*stopaProcentowa/100*liczbaLat)
+print("Twoj zysk wyniesie {:.2f}zl".format(wynik))

@@ -1,0 +1,1 @@
+int(input("Podaj liczbe asdasd"))

@@ -1,32 +1,22 @@
 import random
-maxLastAnswer = 0
-minLastAnswer = 0
 def again(nextGame):
 	if nextGame == "t":
 		nextGame = "n"
 		game()
-def guess(number,attempt,advice="None"):
-	global maxLastAnswer
-	global minLastAnswer
+def guess(number,attempt,maxNumber,advice="None"):
 	if int(attempt) == 0:
-		maxLastAnswer = number
-		minLastAnswer = 1
 		number = number/2
 	else:
 		if advice==1:
-			if minLastAnswer<number:
-				minLastAnswer = number
+			number = random.randint(number,maxNumber)
 		else:
-			if maxLastAnswer>number:
-				maxLastAnswer = number
-		number = random.randint(minLastAnswer,maxLastAnswer)
+			number = random.randint(1,number)
 	return number
 def game():
 	attempt = 0
 	maxNumber = int(input("Od 1 do ilu mam zgadywac liczbe?\n"))
 	userAnswer = 0
-
-	answer = guess(maxNumber,attempt)
+	answer = guess(maxNumber,attempt,maxNumber)
 	while userAnswer!=3:
 		print("Czy liczba o jakiej myslicz to {}?".format(answer))
 		print("*"*10,"Wybierz opcje","*"*10)
@@ -39,7 +29,7 @@ def game():
 		if userAnswer==3:
 			print("Super udalo mi sie zgadnac za {} proba".format(attempt))
 		else:
-			answer = guess(answer,attempt,userAnswer)
+			answer = guess(answer,attempt,maxNumber,userAnswer)
 	nextGame = input("Czy chcesz zagrac jeszcze raz?(t/n)")
 	again(nextGame)
 game()
